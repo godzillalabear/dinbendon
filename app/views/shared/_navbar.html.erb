@@ -1,9 +1,9 @@
 <% if session[:ccc9527] %>
   <%= session[:ccc9527] %> | 
-  <%= link_to "登出", logout_path, method: 'delete' %>
+  <%= link_to "Logout", logout_path, method: 'delete' %>
 <% else %>
-  <a href="/sign_up">註冊</a> |
-  <a href="/login">登入</a>
+  <a href="/sign_up">Sign up</a> |
+  <a href="/login">Login</a>
 <% end %>
 
 <%= flash[:notice] %>
