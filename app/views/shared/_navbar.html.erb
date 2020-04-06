@@ -1,11 +1,13 @@
 <% if session[:ccc9527] %>
 
   <p>
+  	<%= link_to "Order", items_path %> | 
   	<%= session[:ccc9527] %> | 
   	<%= link_to "Logout", logout_path, method: 'delete' %>
   </p>
 <% else %>
   <p>
+  	<%= link_to "Order", items_path %> | 
   	<a href="/sign_up">Sign up</a> |
   	<a href="/login">Login</a>
   </p>
