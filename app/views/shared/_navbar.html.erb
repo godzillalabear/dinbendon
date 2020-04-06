@@ -1,9 +1,14 @@
 <% if session[:ccc9527] %>
-  <%= session[:ccc9527] %> | 
-  <%= link_to "Logout", logout_path, method: 'delete' %>
+
+  <p>
+  	<%= session[:ccc9527] %> | 
+  	<%= link_to "Logout", logout_path, method: 'delete' %>
+  </p>
 <% else %>
-  <a href="/sign_up">Sign up</a> |
-  <a href="/login">Login</a>
+  <p>
+  	<a href="/sign_up">Sign up</a> |
+  	<a href="/login">Login</a>
+  </p>
 <% end %>
 
 <%= flash[:notice] %>
