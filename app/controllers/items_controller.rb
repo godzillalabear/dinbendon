@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # @item = Item.new(item_params)
+    @item = Item.new(item_params)
 
     if @item.save
       redirect_to items_path, notice: 'Add new order!'
@@ -55,6 +55,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
   def item_params
+    #only permit these variable, no user can send other variable via browser
     params.require(:item).permit(:name, 
                                  :description, 
                                  :price, 

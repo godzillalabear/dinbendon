@@ -1,10 +1,10 @@
 <!-- _form.html.erb -->
 
-<%= form_for(@item) do |f| %>
+<%= form_for(item) do |f| %>
 
-  <% if @item.errors.any? %>
+  <% if item.errors.any? %>
     <ul>
-    <% @item.errors.full_messages.each do |message| %>
+    <% item.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
     </ul>
