@@ -28,6 +28,17 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def update
+    #no need a page, just complete the action
+    @item = Item.find(params[:id])
+
+    if @item.update(item_params)
+      redirect_to items_path, notice: 'Your order is updated!'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     item = Item.find(params[:id])
     item.destroy
