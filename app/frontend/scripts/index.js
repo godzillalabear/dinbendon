@@ -1,3 +1,3 @@
 // index.js
 
-alert('welcome');
+// alert('welcome');

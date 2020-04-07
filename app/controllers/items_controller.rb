@@ -60,6 +60,7 @@ class ItemsController < ApplicationController
                                  :description, 
                                  :price, 
                                  :spec,
+                                 :cover,
                                  :category_id)
   end
 
