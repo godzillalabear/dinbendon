@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
 
   def show
     # find_item
-    # @item = Item.find(params[:id])
+
   end
 
   def new
@@ -45,14 +45,15 @@ class ItemsController < ApplicationController
 
   def destroy
     find_item
-    # item = Item.find(params[:id])
-    @item.destroy
+    # @item.destroy
+    @item.update(deleted_at: Time.now)
+
     redirect_to items_path, notice: 'Delete the order'
   end
 
   private
   def find_item
-    @item = Item.find(params[:id])
+    @item = Item.find_by!(params[:id], deleted_at: nil)
   end
   def item_params
     #only permit these variable, no user can send other variable via browser
