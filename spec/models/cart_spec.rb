@@ -30,9 +30,9 @@ RSpec.describe Cart, type: :model do
     it "item can be put in cart, also take out of cart" do
       #Arrange
       cart = Cart.new
-      cat1 = Category.create(name: 'dessert')
-      i1 = cat1.items.create(name: 'pudding', price: 15)
-      i2 = cat1.items.create(name: 'tiramisu', price: 120)
+
+      i1 = FactoryBot.create(:item)
+      i2 = FactoryBot.create(:item)
 
 
       #Act [i1, i1, i1, i2, i2]
