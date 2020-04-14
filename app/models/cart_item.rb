@@ -11,4 +11,9 @@ class CartItem
   def increment!(n = 1)
     @quantity += n
   end
+
+  def item
+    #return the specific cart_item
+    Item.find(@item_id)
+  end
 end
