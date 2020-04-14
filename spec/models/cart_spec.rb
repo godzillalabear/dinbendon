@@ -82,7 +82,7 @@ RSpec.describe Cart, type: :model do
   end
   
   describe "Advance function" do
-    it "turn cart items into hash" do
+    it "turn cart into hash" do
       #Arrange
       cart = Cart.new
 
@@ -102,6 +102,23 @@ RSpec.describe Cart, type: :model do
 
       #Assert
       expect(cart.to_hash).to eq result
+    end
+
+    it "turn hash into cart" do
+      #Arrange
+      result = {
+        "items" => [
+          { "item_id" => 1, "quantity" => 3 },
+          { "item_id" => 2, "quantity" => 2 }
+        ]
+      }
+
+      #Act
+      cart = Cart.from_hash(result)   #from_hash must be a class method
+
+      #Assert
+      expect(cart.items.count).to be 2
+
     end
     
   end
