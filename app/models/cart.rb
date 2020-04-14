@@ -1,34 +1,34 @@
 # cart.rb
 
 class Cart
+
+  attr_reader :items
+
+
   def initialize(items = [])
     @items = items
   end
 
   def add_item(item_id)
     #check if item_id is same
-    found_item = @items.find { |item| item.item_id == item_id}
+    found_item = items.find { |item| item.item_id == item_id}
 
     if found_item
       #found will return the found item_id, .class will show CartItem
       found_item.increment!
     else
-      @items << CartItem.new(item_id)
+      items << CartItem.new(item_id)
     end
 
   end
 
   def empty?
-    false
-    @items.empty?
+    items.empty?
   end
 
-  def items
-    @items
-  end
 
   def total 
-    result = @items.sum { |item| item.total }
+    result = items.sum { |item| item.total }
     # @items.reduce(0) { |sum, item| sum + item.total}
     # tmp = 0
     # @items.each do |item|
