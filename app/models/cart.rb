@@ -28,13 +28,19 @@ class Cart
   end
 
   def total 
+    result = @items.sum { |item| item.total }
     # @items.reduce(0) { |sum, item| sum + item.total}
-    # @items.sum { |item| item.total }
+    # tmp = 0
+    # @items.each do |item|
+    #   tmp += item.total
+    # end
+    # tmp
 
-    tmp = 0
-    @items.each do |item|
-      tmp += item.total
+    #april fool 90% off
+    if Time.now.month == 4 and Time.now.day == 1
+      result = result * 0.1
     end
-    tmp
+
+    result
   end
 end

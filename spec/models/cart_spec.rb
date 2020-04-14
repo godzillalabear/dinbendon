@@ -58,8 +58,25 @@ RSpec.describe Cart, type: :model do
 
       #Assert
       expect(cart.total).to be 350
+    end
 
+    it "special sale event" do
+      #4/1 90%off
 
+      #Arrange
+      cart = Cart.new
+
+      i1 = FactoryBot.create(:item, price: 50)
+      i2 = FactoryBot.create(:item, price: 100)
+      t = Time.local(2008, 4, 1, 10, 5, 0)
+
+      #Act [i1, i1, i1, i2, i2]
+      3.times{cart.add_item(i1.id)}
+      2.times{cart.add_item(i2.id)}
+      Timecop.travel(t)
+
+      #Assert
+      expect(cart.total).to eq 35
     end
 
   end
