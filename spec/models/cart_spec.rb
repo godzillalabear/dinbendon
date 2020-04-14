@@ -45,6 +45,23 @@ RSpec.describe Cart, type: :model do
 
     end
 
+    it "calculate total price of cart" do
+      #Arrange
+      cart = Cart.new
+
+      i1 = FactoryBot.create(:item, price: 50)
+      i2 = FactoryBot.create(:item, price: 100)
+
+      #Act [i1, i1, i1, i2, i2]
+      3.times{cart.add_item(i1.id)}
+      2.times{cart.add_item(i2.id)}
+
+      #Assert
+      expect(cart.total).to be 350
+
+
+    end
+
   end
   
   describe "Advance function" do
