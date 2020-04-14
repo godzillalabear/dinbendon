@@ -43,4 +43,21 @@ class Cart
 
     result
   end
+
+  def to_hash
+
+    # items = []
+    # @items.each do |item|
+    #   items << { "item_id" => item.item_id, 
+    #              "quantity" => item.quantity } 
+    # end
+
+    items = @items.map { |item| 
+      { "item_id" => item.item_id, "quantity" => item.quantity } 
+    }
+
+    result = {
+        "items" => items
+      }
+  end
 end
