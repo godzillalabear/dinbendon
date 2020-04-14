@@ -6,7 +6,16 @@ class Cart
   end
 
   def add_item(item_id)
-    @items << item_id
+    #check if item_id is same
+    found_item = @items.find { |item| item.item_id == item_id}
+
+    if found_item
+      #found will return the found item_id, .class will show CartItem
+      found_item.increment!
+    else
+      @items << CartItem.new(item_id)
+    end
+
   end
 
   def empty?
