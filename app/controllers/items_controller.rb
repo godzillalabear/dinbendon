@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
 
   def show
     # find_item
+    @comment = Comment.new
 
   end
 
