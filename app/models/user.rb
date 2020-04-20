@@ -4,6 +4,8 @@ class User < ApplicationRecord
                        confirmation: true, 
                        length: { minimum: 4 }
 
+  #relationships
   has_many :histories
   has_many :events, through: :histories
+  has_many :comments
 end

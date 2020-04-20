@@ -14,7 +14,7 @@ class UsersController < ApplicationController
                         password: user_params[:password])
 
     if user 
-      session[:ccc9527] = user.email
+      session[:ccc9527] = user.id
       redirect_to root_path
     else
       redirect_to login_path
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def registration
     @user = User.new(user_params)
     if @user.save
-      session[:ccc9527] = @user.email
+      session[:ccc9527] = @user.id
       # TODO: 密碼加密
       redirect_to root_path
     else

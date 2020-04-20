@@ -31,7 +31,7 @@
       </ul>
       <ul class="navbar-nav ml-auto order-2">
         <% if current_user %>
-          
+          <li class="nav-item">Hi, <%= current_user.email%></li>
           <li class="nav-item">
             <%= link_to "Logout", logout_path, method: 'delete', class: "nav-link" %> 
           </li>
