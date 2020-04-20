@@ -8,9 +8,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
     @comment = Comment.new
-    # @comment = @item.comments.order(id: :desc)
+    @comments = @item.comments.includes(:user) #eager loading
 
   end
 
@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
 
   def edit
     # find_item
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
   end
 
   def update
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    find_item
+    # find_item
     # @item.destroy
     @item.update(deleted_at: Time.now)
 
@@ -55,7 +55,8 @@ class ItemsController < ApplicationController
 
   private
   def find_item
-    @item = Item.find_by!(params[:id], deleted_at: nil)
+    @item = Item.find(params[:id])
+    # @item = Item.find_by!(params[:id], deleted_at: nil)
   end
   def item_params
     #only permit these variable, no user can send other variable via browser

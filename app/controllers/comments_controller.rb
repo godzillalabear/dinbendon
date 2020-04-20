@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
       #solution 2 using merge
       
       if @comment.save
-        redirect_to item_path(params[:item_id]), notice: 'Add new comment!'
+        # redirect_to item_path(params[:item_id]), notice: 'Add new comment!'
       else
         render 'items/show'
         # notice: 'Fail to add new comment!'

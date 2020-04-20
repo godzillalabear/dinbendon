@@ -1,0 +1,6 @@
+// create.js.erb
+
+let comments = document.querySelector('#comments')
+
+comments.innerHTML = "<%= j render('comments/comment', comment: @comment) %>" + comments.innerHTML;
+
