@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   resources :categories
-  resources :items
+
+  resources :items do 
+    resources :comments, only:[:create]
+  end
+  # resources :comments
+  # /comments
+  # /comments/:id
+  # /comments/:id/edit
 
   # users
   get "/login", to: "users#login"
