@@ -8,8 +8,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # find_item
+    @item = Item.find(params[:id])
     @comment = Comment.new
+    # @comment = @item.comments.order(id: :desc)
 
   end
 
@@ -29,7 +30,7 @@ class ItemsController < ApplicationController
 
   def edit
     # find_item
-    # @item = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def update
