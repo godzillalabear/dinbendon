@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :find_item, only: [:show, :edit, :update, :destroy]
+  before_action :find_item, only: [:show, :edit, :update, :destroy, :add_to_cart]
                             # excepte:[ :index, :new, :create]
 
   def index
@@ -51,6 +51,14 @@ class ItemsController < ApplicationController
     @item.update(deleted_at: Time.now)
 
     redirect_to items_path, notice: 'Delete the order'
+  end
+
+  def add_to_cart
+    # cart = Cart.from_hash(session[:carty])
+    current_cart.add_item(@item.id)
+    session[:carty] = current_cart.to_hash
+
+    redirect_to root_path, notice: 'The item is added!'
   end
 
   private

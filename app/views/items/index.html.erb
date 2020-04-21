@@ -19,7 +19,8 @@
 					  	<p class="card-text">
 							<%= link_to "Edit", edit_item_path(item.id) , class: "btn btn-primary"%>
 
-							<%= link_to "Delete", item_path(item.id), method: 'delete', data: {confirm: "Do you really want to delete?"}, class: "btn btn-success" %>   	
+							<%= link_to "Delete", item_path(item.id), method: 'delete', data: {confirm: "Do you really want to delete?"}, class: "btn btn-success" %>
+							<%= link_to "Add to Cart", add_to_cart_item_path(item),method: "POST" , class: "btn btn-danger"%>   	
 						</p>
 				    </div>
 				</div>  
