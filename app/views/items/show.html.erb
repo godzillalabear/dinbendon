@@ -2,7 +2,13 @@
 	<%= @item.name %>
 	($: <%= @item.price %>)
 	<a href="#" class="btn btn-outline-danger" data-action="item#heart">
-		<i class="far fa-heart" data-target="item.icon"></i>
+		
+		<% if @item.favorited_by(current_user)%>
+			<i class="fas fa-heart" data-target="item.icon"></i>
+		<% else%>
+			<i class="far fa-heart" data-target="item.icon"></i>
+		<% end %>
+
 	</a>
 
 </h1>

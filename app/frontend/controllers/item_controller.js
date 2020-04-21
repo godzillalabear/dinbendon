@@ -8,7 +8,8 @@
 // </div>
 
 import { Controller } from "stimulus"
-import axios from "axios"
+// import axios from "axios"
+import Rails from "@rails/ujs"
 
 export default class extends Controller {
   static targets = [ "icon" ]
@@ -22,25 +23,42 @@ export default class extends Controller {
   	e.preventDefault();
 
     //api request
-    const csrfToken = document.querySelector('[name=csrf-token]').content
-    axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
+    // const csrfToken = document.querySelector('[name=csrf-token]').content
+    // axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
     
     let item_id = document.querySelector('#item_id').value;
-    // console.log(item_id);
 
-    axios.post(`/api/v1/items/${item_id}/favorite`)
-      .then(resp => {
-        if(resp.data.status === "favorited"){
-          this.iconTarget.classList.remove('far');
-          this.iconTarget.classList.add('fas');
-        }else{
-          this.iconTarget.classList.remove('fas');
-          this.iconTarget.classList.add('far');
+    Rails.ajax({
+      url: `/api/v1/items/${item_id}/favorite`,
+      type: 'POST', 
+      success: resp => {
+        console.log(resp);
+          if(resp.status === "favorited"){
+            this.iconTarget.classList.remove('far');
+            this.iconTarget.classList.add('fas');
+          }else{
+            this.iconTarget.classList.remove('fas');
+            this.iconTarget.classList.add('far');
         }
-      })
-      .catch(err => {
-        console.log(err);    
-      })
+      },
+      error: err => {
+        console.log(err);
+      }
+    })
+
+    // axios.post(`/api/v1/items/${item_id}/favorite`)
+    //   .then(resp => {
+    //     if(resp.data.status === "favorited"){
+    //       this.iconTarget.classList.remove('far');
+    //       this.iconTarget.classList.add('fas');
+    //     }else{
+    //       this.iconTarget.classList.remove('fas');
+    //       this.iconTarget.classList.add('far');
+    //     }
+    //   })
+    //   .catch(err => {
+    //     console.log(err);    
+    //   })
 
     
 
