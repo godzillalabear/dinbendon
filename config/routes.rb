@@ -4,10 +4,7 @@ Rails.application.routes.draw do
   resources :items do 
     resources :comments, only:[:create]
   end
-  # resources :comments
-  # /comments
-  # /comments/:id
-  # /comments/:id/edit
+  
 
   # users
   get "/login", to: "users#login"
@@ -17,5 +14,18 @@ Rails.application.routes.draw do
   post "/sign_up", to: "users#registration"
 
   root "items#index"
+  
+  # APIs
+  namespace :api do         
+    namespace :v1 do        
+      resources :items, only:[] do   
+        member do             
+          post :favorite          
+        end                 
+      end
+    end
+  end
 end
+
+
 
