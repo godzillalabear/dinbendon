@@ -13,10 +13,14 @@ class Item < ApplicationRecord
 
   # scope :available, -> {where(deleted_at: nil)}
   default_scope {where deleted_at: nil}                
-end
 
-def destroy
-   
+
+  def destroy
     @item.update(deleted_at: Time.now)
-
   end
+
+  def favorited_by(u)
+    u.items.include?(self)
+  end
+
+end
