@@ -24,10 +24,11 @@ class OrdersController < ApplicationController
                                        )
       if result.success?
         #success
+        session[:carty] = nil
         redirect_to root_path, notice:'Payment success!'
       else
         #fail
-        session[:carty] = nil
+        
         redirect_to root_path, alert:'Fail to pay.'
       end
 
