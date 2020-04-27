@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  attr_reader :nonce
   belongs_to :user
   has_many :order_items
 
