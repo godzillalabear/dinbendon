@@ -7,4 +7,8 @@ class CartsController < ApplicationController
     session[:carty] = nil
     redirect_to root_path, notice: 'The cart is empty!'
   end
+
+  def checkout
+    @order = Order.new
+  end
 end

@@ -7,39 +7,12 @@
 	</h1>
 
 </div>
-<% if !current_cart.empty?%>
-	<div>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Food</th>
-					<th>Amount</th>
-					<th>Price</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% current_cart.items.each do |cart_item|%>
-				<tr>
-					<td><%= cart_item.item.name %> ( $<%= cart_item.item.price %> )</td>
-					<td><%= cart_item.quantity %></td>
-					<td><%= cart_item.total %></td>
-				</tr>
-				<% end %>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="2">Total</td>
-					<td><%= current_cart.total %></td>
-				</tr>
-			</tfoot>
-		</table>
-	</div>
-<% end %>
+<%= render 'cart' %>
 <div>
 	<%= link_to"Buy More", root_path, class:'btn btn-primary'%>
 
 
-	<%= link_to"Pay", '#', class:'btn btn-danger' unless current_cart.empty? %>
+	<%= link_to"Pay", checkout_cart_path, class:'btn btn-danger' unless current_cart.empty? %>
 
 </div>
 

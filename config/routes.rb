@@ -10,7 +10,18 @@ Rails.application.routes.draw do
   end
   
   #cart
-  resource :cart, only: [:show, :destroy]
+  resource :cart, only: [:show, :destroy] do
+    collection do
+      get :checkout
+    end
+  end
+
+  #orders
+  resources :orders, only:[:index, :show, :create] do
+    member do
+    delete :cancel
+    end 
+  end 
 
   # users
   get "/login", to: "users#login"

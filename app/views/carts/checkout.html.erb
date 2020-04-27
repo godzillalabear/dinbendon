@@ -1,0 +1,25 @@
+<!-- checkout.html.erb -->
+
+<h1>Checkout</h1>
+
+<%= render 'cart' %>
+
+<%= form_for(@order) do |form|%>
+	<div>
+		<%=form.label :receiver%>
+		<%=form.text_field :receiver%>
+	</div>
+
+	<div>
+		<%=form.label :phone%>
+		<%=form.text_field :phone%>
+	</div>
+
+	<div>
+		<%=form.label :address%>
+		<%=form.text_field :address%>
+	</div>
+
+	<%= form.submit "Submit" %>
+
+<%end%>
