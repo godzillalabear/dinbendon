@@ -24,6 +24,7 @@ class OrdersController < ApplicationController
                                        )
       if result.success?
         #success
+        @order.pay!
         session[:carty] = nil
         redirect_to root_path, notice:'Payment success!'
       else
