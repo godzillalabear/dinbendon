@@ -1,8 +1,10 @@
 <!-- _flash.html.erb -->
-
 <% if flash[:notice] %>
-	<div class="alert alert-success" role="alert">
+	<div class="alert alert-success" role="alert" data-controller="flash" data-target="flash.message">
 		<%= flash[:notice] %>
+		<button class="close" data-action="flash#close">
+			<i class="fa fa-times"></i>
+		</button>
 	</div>
 <% end %>
 
