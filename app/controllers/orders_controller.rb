@@ -18,8 +18,28 @@ class OrdersController < ApplicationController
 
     if @order.save
       #pay
+      gateway = Braintree::Gateway.new(
+        :environment => :sandbox,
+        :merchant_id => '72tb9jyzsyn428xr',
+        :public_key => 'c38bsvwyb37ycncj',
+        :private_key => '261f187dd0d8da713c7eb6fe24cadfba',
+      )
+
+      result = gateway.transaction.sale( :amount => current_cart.total,
+                                         :payment_method_nonce => params[:order][:nonce]
+                                       )
+      if result.success?
+        #success
+        redirect_to root_path, notice:'Payment success!'
+      else
+        #fail
+        session[:carty] = nil
+        redirect_to root_path, alert:'Fail to pay.'
+      end
+
+
       #clear cart
-      redirect_to root_path, notice:'ok'
+      # redirect_to root_path, notice:'ok'
     else
       redirect_to root_path, notice:'not ok'
     end
