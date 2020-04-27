@@ -18,12 +18,6 @@ class OrdersController < ApplicationController
 
     if @order.save
       #pay
-      gateway = Braintree::Gateway.new(
-        :environment => :sandbox,
-        :merchant_id => '72tb9jyzsyn428xr',
-        :public_key => 'c38bsvwyb37ycncj',
-        :private_key => '261f187dd0d8da713c7eb6fe24cadfba',
-      )
 
       result = gateway.transaction.sale( :amount => current_cart.total,
                                          :payment_method_nonce => params[:order][:nonce]
